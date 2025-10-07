@@ -28,6 +28,7 @@ export interface SharedData {
     auth: Auth;
     sidebarOpen: boolean;
     [key: string]: unknown;
+    About: About;
 }
 
 export interface User {
@@ -40,4 +41,14 @@ export interface User {
     created_at: string;
     updated_at: string;
     [key: string]: unknown; // This allows for additional properties...
+}
+
+
+export interface About {
+    id: number;
+    title: string;
+    description: string;
+    created_at: string;
+    updated_at: string;
+    [key: string]: unknown;
 }

@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Terminal, Code, Cpu, Zap, Github, Linkedin, Mail } from 'lucide-react';
+import { usePage } from '@inertiajs/react';
 
 export default function Welcome() {
+    const { props } = usePage<{ about: { title: string; description: string } }>();
     const [terminalText, setTerminalText] = useState('');
     const [cursorVisible, setCursorVisible] = useState(true);
     const [commandIndex, setCommandIndex] = useState(0);
@@ -249,15 +251,9 @@ export default function Welcome() {
                                 <div className="flex items-start gap-3 mb-4">
                                     <span className="text-green-500 text-xl">&gt;</span>
                                     <div className="flex-1">
-                                        <h3 className="text-xl font-semibold text-green-400 mb-4">SYSTEM.PROFILE</h3>
+                                        <h3 className="text-xl font-semibold text-green-400 mb-4">{props.about?.title || 'SYSTEM.PROFILE'}</h3>
                                         <p className="text-green-500 leading-relaxed mb-4">
-                                            Passionate developer with a knack for turning complex problems into elegant solutions. 
-                                            I specialize in building robust, scalable applications that push the boundaries of what's possible.
-                                        </p>
-                                        <p className="text-green-500 leading-relaxed">
-                                            When I'm not writing code, you'll find me exploring the latest security protocols, 
-                                            contributing to open source, or diving deep into system architecture. I believe in 
-                                            clean code, continuous learning, and the power of collaboration.
+                                            {props.about?.description || 'Loading description...'}
                                         </p>
                                     </div>
                                 </div>
